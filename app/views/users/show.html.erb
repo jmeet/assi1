@@ -1,0 +1,47 @@
+<h1>show </h1>
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
+<p>
+<b>User:</b>
+<%= @user.user %>
+<%= link_to 'Edit', edit_user_path(@post) %> 
+<%= link_to 'Back', users_path %>
+<h4>details </h4>
+<% @user.details.each do |detail| %>
+  <p>
+  <b>Name </b>
+  <%= detail.name %>
+  </p>
+  <p>
+  <b>Address </b>
+  <%= detail.address %>
+  </p>
+  <p>
+  <b>Phone number</b>
+      <%= detail.ph_number %>
+      </p>
+    <% end %>
+
+<h3>Add details</h3>
+<%= form_for([@user, @user.details.build]) do |f| %>
+  <div class = "field" >
+    <%= f.label :name %></br>
+    <%= f.text_field :name %>
+  </div>
+  <div class = "field" >
+    <%= f.label :address %></br>
+    <%= f.text_field :address %> <br/>
+  </div>
+  <div class = "field" >
+    <%= f.label :ph_number %><br/>
+    <%= f.text_field :ph_number %> <br/>
+  </div>
+  <div class = "action" %>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
